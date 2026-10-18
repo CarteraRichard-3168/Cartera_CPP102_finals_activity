@@ -48,6 +48,4 @@ Known Limitations
 - The date input accepts any string format without strict validation for calendar accuracy (e.g., leap years or valid days).
 
 Reflection
-The hardest part of this project was managing global variable state across multiple interactive functions for counters like warning and critical thresholds. 
-I fixed a bug where classification counts were accumulating incorrectly by properly utilizing the global keyword and resetting/tracking states cleanly.
-Next time, I would try toimprove the design by using object-oriented programming or returning state dictionaries instead of relying on global variables.
+The hardest part of this project was refactoring the program architecture to completely eliminate global variables and transition to a strictly modular design where data is shared exclusively through function parameters and return values. During this process, I fixed scope and data-flow bugs where independent functions could not properly access, track, or update state variables like readings and dates. This was resolved by initializing the data structures locally inside main() and passing them explicitly into functions like view_readings, add_reading, and generate_summary, alongside implementing dedicated helper functions with return values for totals, averages, percentages, and classifications. Next time, I would improve the design by using object-oriented programming with classes to encapsulate data and behaviors together, making state management even more robust and scalable.
